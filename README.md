@@ -14,6 +14,12 @@ It contains the algorithm and training configuration files reported in the paper
 
 SEditor is a novel approach that learns two polices (Figure) towards generic safe RL. The utility maximizer (UM) policy is only responsible for maximizing the utility reward without concerning the constraints. Its output actions are potentially unsafe. The safety editor (SE) policy then transforms these actions into safe ones. It is trained to maximize the constraint reward while minimizing a hinge loss of the utility Q values of actions before and after the edit. Both UM and SE are trained in an off-policy manner for good sample efficiency.
 
+SEditor outperforms several baselines on 14 safe RL tasks. Below are the training curves on Safety Gym:
+
+<p align="center">
+    <img src="images/seditor_safety_gym_curves.png" width="800"/>
+</p>
+
 ## Installation
 
 Our algorithm is based on [Agent Learning Framework (ALF)](https://github.com/HorizonRobotics/alf). Python3.7+ is currently supported by ALF and [Virtualenv](https://virtualenv.pypa.io/en/latest/) is recommended for the installation. After activating a virtual env, download and install ALF:
@@ -73,7 +79,7 @@ where ``<LEVEL>`` can be either ``0`` or ``1``, representing "SafeRacing" and "S
 
 ## Code reading
 
-The entire SEditor algorithm is implemented in the file [./seditor_algorithm.py], although some basic understanding of ALF is required first.
+The entire SEditor algorithm is implemented in this [file](./seditor_algorithm.py), although some basic understanding of ALF is required first.
 
 ## Citation
 If you use SEditor in the research, please consider citing
