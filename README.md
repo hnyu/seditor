@@ -12,13 +12,12 @@ It contains the algorithm and training configuration files reported in the paper
 
 ## What is SEditor?
 
-SEditor is a novel approach that learns two polices (Figure) towards generic safe RL. The utility maximizer (UM) policy is only responsible for maximizing the utility reward without concerning the constraints. Its output actions are potentially unsafe. The safety editor (SE) policy then transforms these actions into safe ones. It is trained to maximize the constraint reward while minimizing a hinge loss of the utility Q values of actions before and after the edit. Both UM and SE are trained in an off-policy manner for good sample efficiency.
+A popular approach in safe RL research is to combine a model-free RL algorithm with the Lagrangian method to adjust the weight of the constraint reward relative to the utility reward dynamically. It relies on a single policy to handle the conflict between utility and constraint rewards, which is often challenging.
 
-SEditor outperforms several baselines on 14 safe RL tasks. Below are the training curves on Safety Gym:
+SEditor is a two-policy approach that learns a safety editor policy transforming potentially unsafe actions proposed by a utility maximizer policy into safe ones. The safety editor is trained to maximize the constraint reward while minimizing a hinge loss of the utility state-action values before and after an action is edited. SEditor extends existing safety layer designs that assume simplified safety models, to general safe RL scenarios where the safety model can in theory be arbitrarily complex. As a first-order method, it is easy to implement and efficient for both inference and training.
 
-<p align="center">
-    <img src="images/seditor_safety_gym_curves.png" width="800"/>
-</p>
+On 12 Safety Gym tasks and 2 safe racing tasks, SEditor demonstrates outstanding utility performance with constraint violation rates as low as once per 2k time steps, even in obstacle-dense environments. On some tasks, this low violation
+rate is up to 200 times lower than that of an unconstrained RL method with similar utility performance.
 
 ## Installation
 
