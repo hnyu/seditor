@@ -49,6 +49,12 @@ cd <ALF_ROOT>/alf/examples/safety
 git clone https://github.com/hnyu/seditor
 ```
 
+And move the file ``seditor_algorithm.py`` under ALF
+
+```bash
+cp <ALF_ROOT>/alf/examples/safety/seditor/seditor_algorithm.py <ALF_ROOT>/alf/algorithms/
+```
+
 ## Training SEditor
 
 Training on the Safety Gym tasks:
