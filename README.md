@@ -84,7 +84,7 @@ where ``<LEVEL>`` can be either ``0`` or ``1``, representing "SafeRacing" and "S
 
 ## Code reading
 
-The entire SEditor algorithm is implemented in this [file](./seditor_algorithm.py), although some basic understanding of ALF is required first.
+The entire SEditor algorithm is implemented in this [file](./seditor_algorithm.py), and the Lagrangian multiplier method is implemented in ``<ALF_ROOT>/alf/algorithms/lagrangian_reward_weight_algorithm.py``. Some basic understanding of ALF is required to understand the entire pipeline.
 
 ## Citation
 If you use SEditor in the research, please consider citing
