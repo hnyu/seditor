@@ -32,7 +32,7 @@ pip install -e .
 
 On top of the basic ALF installation,
 
-- [MuJoCo](https://mujoco.org/) version 2.1+ has to be first downloaded and set up. Please follow their websites for instructions.
+- [MuJoCo](https://github.com/deepmind/mujoco) (C library) version 2.1+ has to be first downloaded and set up. Please follow their websites for instructions. This is required by safety-gym as it depends on OpenAI's deprecated [mujoco_py](https://github.com/openai/mujoco-py).
 
 - our customized Safety Gym environment then needs to be installed:
 
@@ -54,6 +54,18 @@ And move the file ``seditor_algorithm.py`` under ALF
 ```bash
 cp <ALF_ROOT>/alf/examples/safety/seditor/seditor_algorithm.py <ALF_ROOT>/alf/algorithms/
 ```
+
+## Docker
+
+For convenience, we provide a docker image that has all softwares ready for
+running an SEditor training job, so that you can skip the above installation steps.
+
+```bash
+docker pull horizonrobotics/misc:seditor
+```
+
+The docker image has python3.8, CUDA 11.3, and pytorch 11.1, which also supports
+the SEditor training code as tested.
 
 ## Training SEditor
 
