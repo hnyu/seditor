@@ -55,6 +55,12 @@ And move the file ``seditor_algorithm.py`` under ALF
 cp <ALF_ROOT>/alf/examples/safety/seditor/seditor_algorithm.py <ALF_ROOT>/alf/algorithms/
 ```
 
+#### Troubleshooting
+
+Depending on your OS environment, some more apt packages might be needed for
+installation. Please refer to the [docker file](https://github.com/hnyu/seditor/blob/main/Dockerfile)
+for possible missing packages.
+
 ## Docker
 
 For convenience, we provide a docker image that has all softwares ready for
