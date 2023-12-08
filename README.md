@@ -4,15 +4,20 @@
     <img src="images/seditor_framework.png" width="500"/>
 </p>
 
-This repo releases the code for
+[Update Dec 07, 2023]: Now SEditor is [part](https://github.com/HorizonRobotics/alf/blob/pytorch/alf/algorithms/seditor_algorithm.py) of the official ALF repo! You just need to checkout the
+latest 'pytorch' branch of ALF to use SEditor.
+
+---
+
+This repo contains the training configurations for the experiments in
 
 > Towards Safe Reinforcement Learning with a Safety Editor Policy, Yu et al., arXiv 2022.
 
-It contains the algorithm and training configuration files reported in the paper.
+We also provide instructions on how to run those experiments.
 
 ## What is SEditor?
 
-A popular approach in safe RL research is to combine a model-free RL algorithm with the Lagrangian method to adjust the weight of the constraint reward relative to the utility reward dynamically. It relies on a single policy to handle the conflict between utility and constraint rewards, which is often challenging.
+A typical approach in safe RL research is to combine a model-free RL algorithm with the Lagrangian method to adjust the weight of the constraint reward relative to the utility reward dynamically. It relies on a single policy to handle the conflict between utility and constraint rewards, which is often challenging.
 
 SEditor is a two-policy approach that learns a safety editor policy transforming potentially unsafe actions proposed by a utility maximizer policy into safe ones. The safety editor is trained to maximize the constraint reward while minimizing a hinge loss of the utility state-action values before and after an action is edited. SEditor extends existing safety layer designs that assume simplified safety models, to general safe RL scenarios where the safety model can in theory be arbitrarily complex. As a first-order method, it is easy to implement and efficient for both inference and training.
 
@@ -26,7 +31,9 @@ Our algorithm is based on [Agent Learning Framework (ALF)](https://github.com/Ho
 ```bash
 git clone https://github.com/HorizonRobotics/alf
 cd alf
-git checkout origin/seditor_alf -B seditor
+git checkout origin/pytorch -B main
+# If for any reason the latest 'pytorch' branch doesn't work, you can checkout the
+# commit '26be03eb61f59a71f561ab0145671cee674d450f' instead
 pip install -e .
 ```
 
@@ -47,12 +54,6 @@ After the installations, clone this repo under ALF:
 ```bash
 cd <ALF_ROOT>/alf/examples/safety
 git clone https://github.com/hnyu/seditor
-```
-
-And move the file ``seditor_algorithm.py`` under ALF
-
-```bash
-cp <ALF_ROOT>/alf/examples/safety/seditor/seditor_algorithm.py <ALF_ROOT>/alf/algorithms/
 ```
 
 #### Troubleshooting
@@ -102,7 +103,10 @@ where ``<LEVEL>`` can be either ``0`` or ``1``, representing "SafeRacing" and "S
 
 ## Code reading
 
-The entire SEditor algorithm is implemented in this [file](./seditor_algorithm.py), and the Lagrangian multiplier method is implemented in ``<ALF_ROOT>/alf/algorithms/lagrangian_reward_weight_algorithm.py``. Some basic understanding of ALF is required to understand the entire pipeline.
+The entire SEditor algorithm is implemented in this [file](https://github.com/HorizonRobotics/alf/blob/pytorch/alf/algorithms/seditor_algorithm.py), and the Lagrangian multiplier method is implemented [here](https://github.com/HorizonRobotics/alf/blob/pytorch/alf/algorithms/lagrangian_reward_weight_algorithm.py). Some basic understanding of ALF is required to understand the entire pipeline.
+
+## Issue reporting
+For any question or problem, please open an issue in this repo.
 
 ## Citation
 If you use SEditor in the research, please consider citing
