@@ -34,7 +34,11 @@ cd alf
 git checkout origin/pytorch -B main
 # If for any reason the latest 'pytorch' branch doesn't work, you can checkout the
 # commit '26be03eb61f59a71f561ab0145671cee674d450f' instead
-pip install -e .
+# As of Jan 2024, ALF uses torch==1.11 which by default has cuda==10.2. For recent
+# GPU cards (3090 and after), cuda>=11.3 is needed.
+pip install -e . --extra-index-url https://download.pytorch.org/whl/cu113
+# With an old GPU card, you might just do:
+# pip install -e .
 ```
 
 On top of the basic ALF installation,
