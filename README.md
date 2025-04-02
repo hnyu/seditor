@@ -5,7 +5,7 @@
 </p>
 
 [Update Dec 07, 2023]: Now SEditor is [part](https://github.com/HorizonRobotics/alf/blob/pytorch/alf/algorithms/seditor_algorithm.py) of the official ALF repo! You just need to checkout the
-latest 'pytorch' branch of ALF to use SEditor.
+latest 'pytorch' branch of ALF to use SEditor (follow instructions below).
 
 ---
 
@@ -53,12 +53,12 @@ On top of the basic ALF installation,
     python -c "import safety_gym" # test if correctly installed
     ```
 
-After the installations, clone this repo under ALF:
+After the installations, clone this repo:
 
 ```bash
-cd <ALF_ROOT>/alf/examples/safety
-git clone https://github.com/hnyu/seditor
+git clone https://github.com/hnyu/seditor  # Denote the repo path as <SEDITOR_ROOT>
 ```
+
 
 #### Troubleshooting
 
@@ -83,8 +83,8 @@ the SEditor training code as tested.
 Training on the Safety Gym tasks:
 
 ```bash
-cd <ALF_ROOT>/alf/examples
-python -m alf.bin.train --root_dir=<TRAIN_JOB_DIR> --conf safety/seditor/seditor_safety_gym_conf.py --conf_param="create_environment.env_name='Safexp-PointGoal1-v0'"
+cd <SEDITOR_ROOT>
+python -m alf.bin.train --root_dir=<TRAIN_JOB_DIR> --conf seditor_safety_gym_conf.py --conf_param="create_environment.env_name='Safexp-PointGoal1-v0'"
 ```
 
 where `<TRAIN_JOB_DIR>` is any empty directory for storing the training results. You can replace the value of ``create_environment.env_name`` with any combination ``'Safexp-<ROBOT><TASK><LEVEL>-v0'``, where ``<ROBOT>`` can be either ``Point`` or ``Car``, ``<TASK>`` can be ``Button``, ``Push``, or ``Goal``, and ``<LEVEL>`` can be either ``1`` or ``2``.
@@ -99,8 +99,8 @@ Alternatively, training on the safe racing tasks:
 
 
 ```bash
-cd <ALF_ROOT>/alf/examples
-python -m alf.bin.train --root_dir=<TRAIN_JOB_DIR> --conf safety/seditor/seditor_safe_car_racing_conf.py --conf_param="create_environment.env_name='SafeCarRacing<LEVEL>-v0'"
+cd <SEDITOR_ROOT>
+python -m alf.bin.train --root_dir=<TRAIN_JOB_DIR> --conf seditor_safe_car_racing_conf.py --conf_param="create_environment.env_name='SafeCarRacing<LEVEL>-v0'"
 ```
 
 where ``<LEVEL>`` can be either ``0`` or ``1``, representing "SafeRacing" and "SafeRacingObstacle" tasks in the paper, respectively.
